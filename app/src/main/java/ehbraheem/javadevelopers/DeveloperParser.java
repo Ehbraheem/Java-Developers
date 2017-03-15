@@ -15,9 +15,9 @@ public class DeveloperParser {
     private JSONObject rawResponse;
     private JSONArray developersList;
 
-    public DeveloperParser (String response) {
+    public DeveloperParser (StringBuilder response) {
         try {
-            this.rawResponse = new JSONObject(response);
+            this.rawResponse = new JSONObject(response.toString());
             this.developersList = rawResponse.getJSONArray("items");
         } catch (JSONException e) {
             e.printStackTrace();

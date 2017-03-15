@@ -2,4 +2,5 @@
     <string name="app_name">Java Developers</string>
     <string name="developer_list">Java Developers in Lagos:</string>
     <string name="details">This app will query Github for all Java developers in Lagos state Nigeria</string>
+    <string name="title_activity_developers">Developers</string>
 </resources>

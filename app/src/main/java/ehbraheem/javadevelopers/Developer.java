@@ -4,10 +4,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by AppsWorkforce2 on 15/03/2017.
+ * Created by Ehbraheem on 15/03/2017.
  */
 
 public class Developer {
+
     public String name;
     public String url;
     public String avatar;

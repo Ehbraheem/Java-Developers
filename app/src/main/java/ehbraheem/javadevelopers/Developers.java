@@ -31,8 +31,9 @@ public class Developers extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.developerList);
         String language = "Java";
         String location = "Lagos";
+        String access_token = "6908229a5a07571742d7dce1c1feb66cda986ae3";
 
-        String url = String.format("https://api.github.com/search/users?q=language:%s+location:%s",language,location);
+        String url = String.format("https://api.github.com/search/users?access_token=%s&q=language:%s+location:%s", access_token,language,location);
         new GetDevelopers(getApplicationContext(), mListView).execute(url);
     }
 

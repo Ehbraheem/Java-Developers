@@ -2,6 +2,7 @@ package ehbraheem.javadevelopers;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ListView;
 
 import java.io.BufferedInputStream;
@@ -55,6 +56,9 @@ public class GetDevelopers extends AsyncTask<String, Void, DevelopersAdapter> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("doInBackground", e.getMessage());
         }
         return developersAdapter;
 

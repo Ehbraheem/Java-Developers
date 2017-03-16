@@ -55,7 +55,7 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
 
             holder.nameView = (TextView) row.findViewById(R.id.developerName);
             holder.imageView = (ImageView) row.findViewById(R.id.developerImage);
-            holder.urlTextView = (TextView) row.findViewById(R.id.urlView);
+//            holder.urlTextView = (TextView) row.findViewById(R.id.urlView);
 
             row.setTag(holder);
         } else {
@@ -68,7 +68,7 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
 
         // Setting the view to reflect the data we need to display
         holder.nameView.setText(developer.name);
-        holder.urlTextView.setText(developer.url);
+//        holder.urlTextView.setText(developer.url);
 
         // resolving the avatar
         try {

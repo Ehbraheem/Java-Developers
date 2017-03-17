@@ -30,6 +30,11 @@ public class GetDevelopers extends AsyncTask<String, Void, DevelopersAdapter> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
     protected DevelopersAdapter doInBackground(String... params) {
 
         DevelopersAdapter developersAdapter = null;

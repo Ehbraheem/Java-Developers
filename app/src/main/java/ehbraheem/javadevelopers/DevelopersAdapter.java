@@ -71,7 +71,8 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
 //        holder.urlTextView.setText(developer.url);
 
         // resolving the avatar
-        try {
+
+/*        try {  // Moved the logic to a proper class for reuse
             URL imageUrl = new URL(developer.avatar);
             Bitmap avatar = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
             holder.imageView.setImageBitmap(avatar);
@@ -79,8 +80,10 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+       } */
 
+        // TODO: 16/03/2017 Use AsyncTask to download image
+        new ImageDownloader(holder.imageView).execute(developer.avatar);
 
         return row;
 

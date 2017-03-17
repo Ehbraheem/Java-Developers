@@ -20,9 +20,18 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
+
     </android.support.design.widget.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
     <include layout="@layout/content_developers" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -31,5 +40,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
 
 </android.support.design.widget.CoordinatorLayout>

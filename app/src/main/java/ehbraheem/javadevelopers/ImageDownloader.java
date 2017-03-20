@@ -18,18 +18,18 @@ import java.net.URL;
 
 public class ImageDownloader extends AsyncTask<String,Void, Bitmap> {
 
-    private ImageView mImageView;
     private ProgressBar mProgressBar;
+    private ImageView mImageView;
 
-    public ImageDownloader(ImageView imageView, ProgressBar progressBar) {
-        this.mImageView   = imageView;
+    public ImageDownloader(ProgressBar progressBar, ImageView imageView) {
         this.mProgressBar = progressBar;
+        this.mImageView = imageView;
     }
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         mProgressBar.setVisibility(View.GONE);
-        this.mImageView.setImageBitmap(bitmap);
+        mImageView.setImageBitmap(bitmap);
     }
 
     @Override
@@ -40,9 +40,6 @@ public class ImageDownloader extends AsyncTask<String,Void, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(String... params) {
-
-
-
         Bitmap avatar = null;
         try {
             URL imageUrl = new URL(params[0]);
@@ -57,4 +54,6 @@ public class ImageDownloader extends AsyncTask<String,Void, Bitmap> {
         }
         return avatar;
     }
+
+
 }

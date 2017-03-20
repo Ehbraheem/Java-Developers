@@ -3,6 +3,7 @@ package ehbraheem.javadevelopers;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Ehbraheem on 15/03/2017.
@@ -85,12 +87,27 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
        } */
 
         // TODO: 16/03/2017 Use AsyncTask to download image
-         ImageDownloader imageDownloader = (ImageDownloader) new ImageDownloader(holder.imageView,holder.progressBar ).execute(developer.avatar);
+
+        ImageDownloader.Status imageDowloadStatus = new ImageDownloader(holder.progressBar, holder.imageView).execute(developer.avatar).getStatus();
+        if (imageDowloadStatus.name().equals("RUNNING")) {
+            Log.i("Image downloaded", imageDowloadStatus.name());
+        }
+
+//        Bitmap imageDownloader = null;
+//        try {
+//            imageDownloader =  new ImageDownloader(this,holder.progressBar).execute(developer.avatar).get();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
+//        holder.imageView.setImageBitmap(imageDownloader);
 
         return row;
 
 
     }
+
 
     private static class PlaceHolder {
 

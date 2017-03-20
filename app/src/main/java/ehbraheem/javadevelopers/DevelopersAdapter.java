@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -55,6 +56,7 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
 
             holder.nameView = (TextView) row.findViewById(R.id.developerName);
             holder.imageView = (ImageView) row.findViewById(R.id.developerImage);
+            holder.progressBar = (ProgressBar) row.findViewById(R.id.imageLoading);
 //            holder.urlTextView = (TextView) row.findViewById(R.id.urlView);
 
             row.setTag(holder);
@@ -83,7 +85,7 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
        } */
 
         // TODO: 16/03/2017 Use AsyncTask to download image
-        new ImageDownloader(holder.imageView).execute(developer.avatar);
+         ImageDownloader imageDownloader = (ImageDownloader) new ImageDownloader(holder.imageView,holder.progressBar ).execute(developer.avatar);
 
         return row;
 
@@ -95,5 +97,6 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
         TextView nameView;
         ImageView imageView;
         TextView urlTextView;
+        ProgressBar progressBar;
     }
 }

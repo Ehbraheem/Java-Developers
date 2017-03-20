@@ -34,7 +34,7 @@ public class Developers extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.developerList);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
+        mProgressBar = (ProgressBar) findViewById(R.id.contentLoading);
 
         String language = "Java";
         String location = "Lagos";

@@ -19,21 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/developerImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:layout_margin="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"/>
+           <include layout="@layout/developer_images" />
 
             <TextView
                 android:id="@+id/developerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="TextView"
                 android:layout_below="@id/developerImage"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>

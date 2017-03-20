@@ -3,7 +3,9 @@ package ehbraheem.javadevelopers;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -23,14 +25,17 @@ public class GetDevelopers extends AsyncTask<String, Void, DevelopersAdapter> {
 
     private Context mContext;
     private ListView mListView;
+    private ProgressBar mProgressBar;
 
-    public GetDevelopers(Context context, ListView listView) {
-        this.mContext = context;
-        this.mListView = listView;
+    public GetDevelopers(Context context, ListView listView, ProgressBar progressBar) {
+        this.mContext      = context;
+        this.mListView     = listView;
+        this.mProgressBar  = progressBar;
     }
 
     @Override
     protected void onPreExecute() {
+        mProgressBar.setVisibility(View.VISIBLE);
         super.onPreExecute();
     }
 
@@ -73,6 +78,7 @@ public class GetDevelopers extends AsyncTask<String, Void, DevelopersAdapter> {
     protected void onPostExecute(DevelopersAdapter developersAdapter) {
 
         if (mListView != null) {
+            mProgressBar.setVisibility(View.GONE);
             mListView.setAdapter(developersAdapter);
         }
     }

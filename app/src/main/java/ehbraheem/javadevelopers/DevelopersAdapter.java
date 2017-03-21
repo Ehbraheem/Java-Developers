@@ -46,62 +46,31 @@ public class DevelopersAdapter extends ArrayAdapter<Developer> {
 
 
         View row = convertView;
-        PlaceHolder holder = null;
 
-        // currently we don't have a row view to reuse
-        if (row == null) {
-            // Create a new row
-            LayoutInflater inflater = LayoutInflater.from(mContext);
-            row = inflater.inflate(mLayoutResourceId, parent, false);
 
-            holder  = new PlaceHolder();
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        row = inflater.inflate(mLayoutResourceId, parent, false);
 
-            holder.nameView = (TextView) row.findViewById(R.id.developerName);
-            holder.imageView = (ImageView) row.findViewById(R.id.developerImage);
-            holder.progressBar = (ProgressBar) row.findViewById(R.id.imageLoading);
-//            holder.urlTextView = (TextView) row.findViewById(R.id.urlView);
+        TextView nameView = (TextView) row.findViewById(R.id.developerName);
+        ImageView imageView = (ImageView) row.findViewById(R.id.developerImage);
 
-            row.setTag(holder);
-        } else {
-            // using existing view
-            holder = (PlaceHolder) row.getTag();
-        }
-
-        // Get data from data array
         Developer developer = mData[position];
 
-        // Setting the view to reflect the data we need to display
-        holder.nameView.setText(developer.name);
-//        holder.urlTextView.setText(developer.url);
+        nameView.setText(developer.name);
 
-        // resolving the avatar
 
-/*        try {  // Moved the logic to a proper class for reuse
-            URL imageUrl = new URL(developer.avatar);
-            Bitmap avatar = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
-            holder.imageView.setImageBitmap(avatar);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-       } */
+        ProgressBar progressBar = (ProgressBar) row.findViewById(R.id.imageLoading);
+        ImageDownloader imageDownloader = new ImageDownloader(progressBar, imageView);
 
-        // TODO: 16/03/2017 Use AsyncTask to download image
+        imageDownloader.execute(developer.avatar);
 
-        ImageDownloader.Status imageDowloadStatus = new ImageDownloader(holder.progressBar, holder.imageView).execute(developer.avatar).getStatus();
-        if (imageDowloadStatus.name().equals("RUNNING")) {
-            Log.i("Image downloaded", imageDowloadStatus.name());
-        }
 
-//        Bitmap imageDownloader = null;
-//        try {
-//            imageDownloader =  new ImageDownloader(this,holder.progressBar).execute(developer.avatar).get();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        }
-//        holder.imageView.setImageBitmap(imageDownloader);
+//            holder  = new PlaceHolder();
+//
+//            holder.nameView = (TextView) row.findViewById(R.id.developerName);
+//            holder.imageView = (ImageView) row.findViewById(R.id.developerImage);
+//            holder.
+
 
         return row;
 

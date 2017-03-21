@@ -40,7 +40,8 @@ public class Developers extends AppCompatActivity {
         String location = "Lagos";
         String access_token = "6908229a5a07571742d7dce1c1feb66cda986ae3";
 
-        String url = String.format("https://api.github.com/search/users?access_token=%s&q=language:%s+location:%s", access_token,language,location);
+//        String url = String.format("https://api.github.com/search/users?access_token=%s&q=language:%s+location:%s", access_token,language,location);
+        String url = String.format("https://api.github.com/search/users?q=language:%s+location:%s", access_token,language,location);
         AsyncTask.Status go = new GetDevelopers(getApplicationContext(), mListView, mProgressBar).execute(url).getStatus();
         Log.i("Async Task", go.name());
 

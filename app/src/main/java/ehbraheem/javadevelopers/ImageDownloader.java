@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by AppsWorkforce2 on 16/03/2017.
+ * Created by Ehbraheem on 16/03/2017.
  */
 
 public class ImageDownloader extends AsyncTask<String,Void, Bitmap> {

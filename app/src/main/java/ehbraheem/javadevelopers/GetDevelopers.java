@@ -17,7 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by AppsWorkforce2 on 15/03/2017.
+ * Created by Ehbraheem on 15/03/2017.
  */
 
 public class GetDevelopers extends AsyncTask<String, Void, DevelopersAdapter> {
